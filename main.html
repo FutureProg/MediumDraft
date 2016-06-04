@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>Editor</title>
+    <link href="style.css" rel="stylesheet" />
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+</head>
+<body>
+    <nav>
+        <img id="close-button" src="images/close_icon.png" width="20px"/>
+        <h3>Documents</h3>
+        <hr />
+        <div id="document-list">
+            <div class="document-list-item">
+                This is a document
+            </div>
+        </div>
+    </nav>
+    <img id="open-drawer" src="images/menu_icon.png" />
+    <content>
+        <main role="textbox">
+            <h3 class="content-title" placeholder="Title" contenteditable="true"></h3>
+            <p  class="content-body" contenteditable="true" placeholder="Tell your story..."></p>
+        </main>
+    </content>
+    <script>window.$ = window.jQuery = require('jquery');</script>
+    <script src="editor.js"></script>
+</body>
+</html>

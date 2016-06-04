@@ -1,0 +1,95 @@
+body{
+    padding:-5px;
+    font-family: "Cambria"
+}
+h1,h2,h3{
+    font-family: "Lucida Grande"
+}
+
+#open-drawer{
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: 50px;
+}
+#open-drawer:hover{
+    cursor: pointer;
+}
+
+/**
+* For the nav menu
+*/
+nav{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 20%;
+    background-color: black;
+    color: white;
+    margin-right: 20px;
+    padding: 20px;
+    z-index: 100;
+}
+nav #close-button:hover{
+    cursor: pointer;
+}
+nav h3{
+    text-align: center;
+}
+nav div.document-list-item{
+    margin: 20px 0;
+    font-style: "Lucida Grande";
+}
+nav div.document-list-item:hover{
+    cursor: pointer;
+}
+
+/**
+* Editor CSS
+*/
+content{
+    position: absolute;
+    left: 25%;
+}
+main{
+    padding: 20px;
+}
+main>*:focus{
+    border: none;
+    outline: none;
+    overflow: auto;
+
+    -webkit-box-shadow:none;
+    -moz-box-shadow:none;
+    box-shadow: none;
+}
+.content-title{
+    width: 70vw;
+    max-width: 70vw;
+    font-weight: 700;
+    font-size: 36px;
+    overflow: hidden;
+}
+.content-title[placeholder]:empty:before, .content-body[placeholder]:empty:before{
+    content:attr(placeholder);
+    max-width: 70vw;
+    color:rgba(0,0,0,.3);
+}
+.content-body[placeholder]:empty:before{
+    min-height: 70vh;
+}
+.content-body{
+    font-weight: 400;
+    margin-top: 10px;
+    max-width: 70vw;
+    min-height: 70vh;
+    font-size: 21px;
+    word-wrap: break-word;
+}
+.content-body:hover, .content-title:hover{
+    cursor: text;
+}
+/*.default-title{
+    color:rgba(0,0,0,.3);
+}*/
