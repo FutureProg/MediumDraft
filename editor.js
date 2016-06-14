@@ -44,16 +44,22 @@ const Menu = require('./menu.js');
 Menu.editor = editor;
 
 let saveChanges = () => {
-    if(editor.getText() !== prevText || prevTitle !== editor.getTitle()){
+    if(editor.getText() != prevText){
         Menu.hide();
         prevText = editor.getText();
         let title = "Draft";
-        if(editor.getTitle() !== null && editor.getTitle() !== ""){
-            title = editor.getTitle();
+        if(editor.getTitle() !== null && editor.getTitle() !== "" && prevTitle !== editor.getTitle()){
+            prevTitle = editor.getTitle();
+            title = prevTitle;
         }
+        editor.setTitle(editor.getTitle());
         editor.updateDocument();
     }
 }
+
+$("#save-button").click(function(){
+    editor.updateDocument();    
+});
 
 window.setInterval(saveChanges,200);
 

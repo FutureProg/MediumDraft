@@ -18,14 +18,19 @@
             return this.body;
         }
         setTitle(str){
-            fs.renameSync(`./drafts/${this.title}`,`./drafts/${str}`);
-            this.title = str;            
-            //fs.writeFileSync(`./drafts/${str}`,this.body);
-            require('./menu.js').refresh();
+            if(str.trim() == this.title)return;
+            try{
+                fs.renameSync(`./drafts/${this.title}`,`./drafts/${str}`);
+            }catch(e){}
+            this.title = str;
+            //fs.writeFileSync(`./drafts/${str}`,this.body);            
         }
         setBody(str){
+            if(str.trim() == this.body)return;
             this.body = str;
-            fs.writeFileSync(`./drafts/${this.title}`,this.body);
+            try{
+                fs.writeFileSync(`./drafts/${this.title}`,this.body);
+            }catch(e){}
         }
     }
 
