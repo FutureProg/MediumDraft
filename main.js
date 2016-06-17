@@ -1,5 +1,5 @@
 var electron = require('electron');
-const {app} = electron;
+const {app,globalShortcut} = electron;
 const {BrowserWindow} = electron;
 const fs = require('fs');
 
@@ -27,7 +27,7 @@ app.on('ready',()=>{
     }catch(e){
         fs.mkdirSync('./drafts');
     }
-    createWindow();
+    createWindow();    
 });
 app.on('window-all-closed',()=>{
     if(process.platform !== 'darwin'){
@@ -38,4 +38,7 @@ app.on('activate',()=>{
     if(win == null){
         createWindow();
     }
+});
+app.on('will-quit',()=>{
+    globalShortcut.unregisterAll();
 });

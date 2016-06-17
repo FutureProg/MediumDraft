@@ -18,6 +18,15 @@ h1,h2,h3{
     opacity: 1;
 }
 
+#toast-msg{
+    position: absolute;
+    top: 25px;
+    left: 90px;
+    font-size: 1em;
+    color: black;
+    opacity: 0.2;
+}
+
 #save-button{
     position: absolute;
     top: 10px;

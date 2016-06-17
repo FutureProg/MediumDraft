@@ -39,8 +39,11 @@ class Editor{
 let prevText = "";
 let prevTitle = "";
 let editor = new Editor($("main"));
+window.editor = editor;
 const DM = require('./documents.js').DocumentManager;
 const Menu = require('./menu.js');
+const Toast = require('./toast.js');
+const {app,globalShortcut} = require('electron');
 Menu.editor = editor;
 
 let saveChanges = () => {
@@ -57,11 +60,13 @@ let saveChanges = () => {
     }
 }
 
-$("#save-button").click(function(){
-    editor.updateDocument();    
-});
+window.manualSave = () =>{
+    editor.updateDocument();
+    Toast.show("Changes Saved");
+}
+$("#save-button").click(window.manualSave);
 
-window.setInterval(saveChanges,200);
+window.setInterval(()=>{saveChanges;},1000);
 
 })();
 

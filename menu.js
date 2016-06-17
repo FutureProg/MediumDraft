@@ -6,14 +6,12 @@
             return new Document(Menu.documents[index]);
         }
         static hide(){
-            console.log("HIDE");
             Menu.object.animate({'left':'-30%'},300);
             Menu.editor.object.parent().animate({'left':'0'},300);
             Menu.editor.body.animate({'width':'90vw', 'max-width':'90vw'},300);
             Menu.editor.title.animate({'width':'90vw', 'max-width':'90vw'},300);
         }
         static show(){
-            console.log("SHOW");
             Menu.object.animate({'left':'0'},300);
             Menu.editor.object.parent().animate({'left':'25%'},300);
             Menu.editor.body.animate({'width':'70vw','max-width':'70vw'},300);
@@ -53,6 +51,11 @@
                 content = content + `<div class='document-list-item' pos='${i}'>${Menu.documents[i]}</div>`;
             }
             Menu.documentList.html(content);
+            $(".document-list-item").on('click',function(){
+                var doc = new Document(Menu.documents[$(this).attr('pos')]);
+                Menu.editor.changeDocument(doc);
+                Menu.hide();
+            });
         }
     }
     Menu.started = Menu.started || false;
